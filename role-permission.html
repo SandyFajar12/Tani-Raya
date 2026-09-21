@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelola Role &amp; Permission — TaniRaya ERP</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <header class="app-header app-header--sub">
+    <div class="app-header__row">
+      <button class="icon-btn" onclick="window.location.href='dashboard.html'" aria-label="Kembali">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </button>
+      <div class="app-header__titles">
+        <div class="app-header__title">Kelola Role &amp; Permission</div>
+        <div class="app-header__sub">Atur hak akses per role</div>
+      </div>
+      <span style="width:36px"></span>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <div class="tabs">
+      <button class="tab-btn is-active" data-tab-target="viewList">Daftar Role</button>
+      <button class="tab-btn" data-tab-target="viewForm">Atur Permission</button>
+    </div>
+
+    <!-- ===================== LIST VIEW ===================== -->
+    <section id="viewList" class="view list-view is-active">
+
+      <div class="list-card">
+        <div class="list-card__main">
+          <span class="list-card__title">Admin</span>
+          <span class="list-card__meta">Akses penuh ke semua menu · 1 user</span>
+        </div>
+        <div class="list-card__side">
+          <button class="btn btn-sm btn-secondary" style="width:auto; height:30px; padding:0 12px;" onclick="switchView('viewForm', document.querySelector('[data-tab-target=viewForm]'))">Kelola Akses</button>
+        </div>
+      </div>
+
+      <div class="list-card">
+        <div class="list-card__main">
+          <span class="list-card__title">Approver</span>
+          <span class="list-card__meta">Approve/tolak pre-order · 1 user</span>
+        </div>
+        <div class="list-card__side">
+          <button class="btn btn-sm btn-secondary" style="width:auto; height:30px; padding:0 12px;" onclick="switchView('viewForm', document.querySelector('[data-tab-target=viewForm]'))">Kelola Akses</button>
+        </div>
+      </div>
+
+      <div class="list-card">
+        <div class="list-card__main">
+          <span class="list-card__title">Staf Gudang</span>
+          <span class="list-card__meta">Kelola stok &amp; pemakaian · 1 user</span>
+        </div>
+        <div class="list-card__side">
+          <button class="btn btn-sm btn-secondary" style="width:auto; height:30px; padding:0 12px;" onclick="switchView('viewForm', document.querySelector('[data-tab-target=viewForm]'))">Kelola Akses</button>
+        </div>
+      </div>
+
+      <div class="list-card">
+        <div class="list-card__main">
+          <span class="list-card__title">Staf Pembelian</span>
+          <span class="list-card__meta">Input transaksi pembelian · 1 user</span>
+        </div>
+        <div class="list-card__side">
+          <button class="btn btn-sm btn-secondary" style="width:auto; height:30px; padding:0 12px;" onclick="switchView('viewForm', document.querySelector('[data-tab-target=viewForm]'))">Kelola Akses</button>
+        </div>
+      </div>
+
+      <div class="list-card">
+        <div class="list-card__main">
+          <span class="list-card__title">Staf Lapangan</span>
+          <span class="list-card__meta">Input pemakaian sparepart · 1 user</span>
+        </div>
+        <div class="list-card__side">
+          <button class="btn btn-sm btn-secondary" style="width:auto; height:30px; padding:0 12px;" onclick="switchView('viewForm', document.querySelector('[data-tab-target=viewForm]'))">Kelola Akses</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===================== FORM VIEW (permission checklist) ===================== -->
+    <section id="viewForm" class="view">
+      <form onsubmit="return handleDemoSubmit(event, 'Perubahan hak akses tersimpan (demo)', 'viewList')">
+
+        <div class="form-group">
+          <label class="form-label" for="rp-role">Role yang Diatur</label>
+          <select class="form-control" id="rp-role">
+            <option>Admin</option>
+            <option selected>Approver</option>
+            <option>Staf Gudang</option>
+            <option>Staf Pembelian</option>
+            <option>Staf Lapangan</option>
+          </select>
+        </div>
+
+        <div class="list-card" style="display:block;">
+          <span class="list-card__title">Pre-Order</span>
+          <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+            <label class="form-check"><input type="checkbox" checked> Lihat daftar pre-order</label>
+            <label class="form-check"><input type="checkbox"> Ajukan pre-order baru</label>
+            <label class="form-check"><input type="checkbox" checked> Setujui / tolak pre-order</label>
+          </div>
+        </div>
+
+        <div class="list-card" style="display:block;">
+          <span class="list-card__title">Pemakaian</span>
+          <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+            <label class="form-check"><input type="checkbox" checked> Lihat riwayat pemakaian</label>
+            <label class="form-check"><input type="checkbox"> Catat pemakaian baru</label>
+          </div>
+        </div>
+
+        <div class="list-card" style="display:block;">
+          <span class="list-card__title">Pembelian</span>
+          <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+            <label class="form-check"><input type="checkbox" checked> Lihat riwayat pembelian</label>
+            <label class="form-check"><input type="checkbox"> Catat pembelian baru</label>
+          </div>
+        </div>
+
+        <div class="list-card" style="display:block;">
+          <span class="list-card__title">Update Stok</span>
+          <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+            <label class="form-check"><input type="checkbox" checked> Lihat stok terkini</label>
+            <label class="form-check"><input type="checkbox"> Lakukan penyesuaian stok</label>
+          </div>
+        </div>
+
+        <div class="list-card" style="display:block;">
+          <span class="list-card__title">Master Data (Sparepart, Armada, Supplier)</span>
+          <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+            <label class="form-check"><input type="checkbox" checked> Lihat data master</label>
+            <label class="form-check"><input type="checkbox"> Tambah / edit data master</label>
+            <label class="form-check"><input type="checkbox"> Hapus data master</label>
+          </div>
+        </div>
+
+        <div class="list-card" style="display:block;">
+          <span class="list-card__title">Master User</span>
+          <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+            <label class="form-check"><input type="checkbox"> Lihat daftar user</label>
+            <label class="form-check"><input type="checkbox"> Tambah / edit user</label>
+            <label class="form-check"><input type="checkbox"> Kelola role &amp; permission</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Simpan Perubahan Akses</button>
+      </form>
+    </section>
+
+    <p class="demo-note">Centang di atas hanya ilustrasi — struktur permission sebenarnya akan mengikuti tabel <code>roles</code> &amp; <code>permissions</code> pada dokumen rencana Laravel.</p>
+
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

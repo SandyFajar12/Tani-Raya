@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartu Stok — TaniRaya ERP</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <header class="app-header app-header--sub">
+    <div class="app-header__row">
+      <button class="icon-btn" onclick="window.location.href='update-stok.html'" aria-label="Kembali">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </button>
+      <div class="app-header__titles">
+        <div class="app-header__title">Kartu Stok</div>
+        <div class="app-header__sub">Riwayat pergerakan stok</div>
+      </div>
+      <span style="width:36px"></span>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <div class="form-group">
+      <label class="form-label" for="ks-filter">Pilih Sparepart</label>
+      <select class="form-control" id="ks-filter" onchange="showToast('Menampilkan kartu stok — ' + this.value + ' (demo)')">
+        <option>Filter Oli Mesin (SP-0012)</option>
+        <option>Van Belt Alternator (SP-0024)</option>
+        <option>Oli Hidrolik 20L (SP-0031)</option>
+        <option>Kampas Rem (SP-0045)</option>
+      </select>
+    </div>
+
+    <section class="section">
+      <div class="section__head">
+        <h2 class="section__title">Riwayat — Filter Oli Mesin</h2>
+      </div>
+
+      <div class="list-view is-active">
+
+        <div class="list-card">
+          <div class="list-card__main">
+            <span class="list-card__title">Pembelian — CV Sumber Sparepart</span>
+            <span class="list-card__meta">INV-2026-0091 · 20 Sep 2026</span>
+          </div>
+          <div class="list-card__side">
+            <span class="badge badge--approved">Masuk</span>
+            <span class="list-card__value">+20 pcs</span>
+            <span class="list-card__meta">Saldo: 20</span>
+          </div>
+        </div>
+
+        <div class="list-card">
+          <div class="list-card__main">
+            <span class="list-card__title">Pemakaian — Dump Truck DT-03</span>
+            <span class="list-card__meta">Dicatat oleh Agus P. · 21 Sep 2026</span>
+          </div>
+          <div class="list-card__side">
+            <span class="badge badge--rejected">Keluar</span>
+            <span class="list-card__value">−2 pcs</span>
+            <span class="list-card__meta">Saldo: 18</span>
+          </div>
+        </div>
+
+        <div class="list-card">
+          <div class="list-card__main">
+            <span class="list-card__title">Pemakaian — Truk Angkut FR-D8</span>
+            <span class="list-card__meta">Dicatat oleh Budi S. · 22 Sep 2026</span>
+          </div>
+          <div class="list-card__side">
+            <span class="badge badge--rejected">Keluar</span>
+            <span class="list-card__value">−3 pcs</span>
+            <span class="list-card__meta">Saldo: 15</span>
+          </div>
+        </div>
+
+        <div class="list-card">
+          <div class="list-card__main">
+            <span class="list-card__title">Penyesuaian — Stok Opname Bulanan</span>
+            <span class="list-card__meta">Dilakukan oleh Budi S. · 25 Sep 2026</span>
+          </div>
+          <div class="list-card__side">
+            <span class="badge badge--pending">Opname</span>
+            <span class="list-card__value">−9 pcs</span>
+            <span class="list-card__meta">Saldo: 6</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <p class="demo-note">Data riwayat di atas contoh statis. Di versi Laravel, daftar ini diambil dari tabel <code>stock_movements</code> dan otomatis terisi tiap ada pembelian, pemakaian, atau penyesuaian.</p>
+
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
